@@ -50,8 +50,7 @@ public class Sprint {
                 && !bugReport.isCompleted()
                 && getTotalEstimate() + bugReport.getEstimate() <= capacity) {
 
-            tickets[index++] = Bug.createBug(bugReport.getId(), bugReport.getName(), bugReport.getEstimate(),
-                    bugReport.userStory);
+            tickets[index++] = bugReport;
             return true;
         }
         return false;
