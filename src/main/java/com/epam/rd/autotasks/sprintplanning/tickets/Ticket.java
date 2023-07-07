@@ -1,28 +1,36 @@
 package com.epam.rd.autotasks.sprintplanning.tickets;
 
-public class Ticket {
+public class Ticket extends Sprint{
+    boolean isComplete;
+    private final int id;
+    private final String name;
+    private final int estimate;
+
 
     public Ticket(int id, String name, int estimate) {
-        throw new UnsupportedOperationException("Implement this method");
+        this.id = id;
+        this.name = name;
+        this.estimate = estimate;
+
     }
 
     public int getId() {
-        throw new UnsupportedOperationException("Implement this method");
+        return id;
     }
 
     public String getName() {
-        throw new UnsupportedOperationException("Implement this method");
+        return name;
     }
 
     public boolean isCompleted() {
-        throw new UnsupportedOperationException("Implement this method");
+        return isComplete;
     }
 
     public void complete() {
-        throw new UnsupportedOperationException("Implement this method");
+        isComplete = true;
     }
 
     public int getEstimate() {
-        throw new UnsupportedOperationException("Implement this method");
+        return estimate;
     }
 }
