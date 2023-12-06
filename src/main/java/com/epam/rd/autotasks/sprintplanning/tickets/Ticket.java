@@ -1,6 +1,8 @@
 package com.epam.rd.autotasks.sprintplanning.tickets;
 
-public class Ticket extends Sprint{
+import com.epam.rd.autotasks.sprintplanning.Sprint;
+
+public class Ticket extends Sprint {
     boolean isComplete;
     private final int id;
     private final String name;

@@ -3,8 +3,6 @@ package com.epam.rd.autotasks.sprintplanning;
 import com.epam.rd.autotasks.sprintplanning.tickets.Bug;
 import com.epam.rd.autotasks.sprintplanning.tickets.Ticket;
 import com.epam.rd.autotasks.sprintplanning.tickets.UserStory;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Sprint {
 
@@ -28,11 +26,11 @@ public class Sprint {
     public boolean addUserStory(UserStory userStory) {
         if (index + 1 <= ticketsLimit
                 && userStory != null
-                && !userStory.isCompleted()
+                && ! userStory.isCompleted()
                 && getTotalEstimate() + userStory.getEstimate() <= capacity) {
 
             for (UserStory dependency : userStory.dependencies) {
-                if (!containsTicket(dependency)) {
+                if (! containsTicket(dependency)) {
                     return false;
                 }
             }
@@ -47,7 +45,7 @@ public class Sprint {
     public boolean addBug(Bug bugReport) {
         if (index + 1 <= ticketsLimit
                 && bugReport != null
-                && !bugReport.isCompleted()
+                && ! bugReport.isCompleted()
                 && getTotalEstimate() + bugReport.getEstimate() <= capacity) {
 
             tickets[index++] = bugReport;
@@ -57,16 +55,19 @@ public class Sprint {
     }
 
     public Ticket[] getTickets() {
-        List<Ticket> list = new ArrayList<>();
+        int i = 0;
+        int length = 0;
+        for (Ticket ticket : tickets) {
+            if (ticket != null) length++;
+        }
+        Ticket[] copy = new Ticket[length];
         for (Ticket ticket : tickets) {
             if (ticket == null) {
-                break;
+                continue;
             }
-            list.add(ticket);
+            copy[i++] = ticket;
         }
-
-        Ticket[] copy = new Ticket[list.size()];
-        return list.toArray(copy);
+        return copy;
     }
 
     public int getTotalEstimate() {
